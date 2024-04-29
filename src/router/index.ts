@@ -4,8 +4,6 @@ import BlogHome from '@/pages/BlogHome.vue';
 import TestPage from '@/pages/TestPage.vue';
 import NotFound from '@/pages/NotFound.vue';
 
-import PArticle from '@/pages/article/PArticle.vue';
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -22,7 +20,7 @@ const router = createRouter({
     {
       path: '/article/:id',
       name: 'article',
-      component: PArticle
+      component: import('@/pages/article/PArticle.vue')
     },
     {
       path: '/:pathMatch(.*)*',

@@ -72,7 +72,6 @@ export const useTestdata = defineStore('testdata', () => {
             board: 1,
         
             title: '咱是最强的',
-            content: '不服来战',
             summary: '不服来战',
         
             like: 999,
@@ -89,7 +88,6 @@ export const useTestdata = defineStore('testdata', () => {
             board: 3,
         
             title: '博丽神社开张',
-            content: '不来参拜就打爆你的狗头',
             summary: '不来参拜就打爆你的狗头',
         
             like: 100,
@@ -107,34 +105,6 @@ export const useTestdata = defineStore('testdata', () => {
         
             title: '程式测试',
             summary: '',
-            content:
-`# Markdown 测试
-
-## 二级标题
-### 三级标题
-#### 四级标题
-
-- 无序列表项 1
-- 无序列表项 2
-- 无序列表项 3
-
-- 有序列表项 1
-- 有序列表项 2
-- 有序列表项 3
-
-> 我可以吞下玻璃而不伤身体。我可以吞下玻璃而不伤身体。我可以吞下玻璃而不伤身体。我可以吞下玻璃而不伤身体。我可以吞下玻璃而不伤身体。我可以吞下玻璃而不伤身体。
-
-\`\`\`
-#include<bits/stdc++.h>
-using namespace std;
-int main(){
-    int a, b;
-    cin >> a >> b;
-    cout << a + b << endl;
-    return 0;
-}
-\`\`\`
-`,
         
             like: 1010101,
             dislike: 0,
