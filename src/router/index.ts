@@ -13,6 +13,11 @@ const router = createRouter({
       component: BlogHome
     },
     {
+      path: '/tool',
+      name: 'tool',
+      component: () => import('@/pages/tool/ToolHome.vue')
+    },
+    {
       path: '/test',
       name: 'test',
       component: TestPage
@@ -20,7 +25,7 @@ const router = createRouter({
     {
       path: '/article/:id',
       name: 'article',
-      component: import('@/pages/article/PArticle.vue')
+      component: () => import('@/pages/article/PArticle.vue')
     },
     {
       path: '/:pathMatch(.*)*',

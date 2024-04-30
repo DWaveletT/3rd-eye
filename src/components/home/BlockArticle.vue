@@ -51,18 +51,20 @@ import {
 import CTag from '@/components/common/CTag.vue';
 import CDate from '@/components/common/CDate.vue';
 
-import { ElCard, ElTag } from 'element-plus';
+import { ElCard } from 'element-plus';
 
 import { useBlogConfig } from '@/stores/config';
+
 import { useRouter } from 'vue-router';
+
+const props = defineProps<{
+    posts: Record<string, Post>
+}>();
 
 const router = useRouter();
 
 const blogConfig = useBlogConfig();
 
-const props = defineProps<{
-    posts: Post[]
-}>();
 
 function gotoArticle(id: string){
     router.push({

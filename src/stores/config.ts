@@ -1,4 +1,4 @@
-import type { Board, Tag, User } from '@/interface';
+import type { Board, Tag, Tool, User } from '@/interface';
 import { defineStore } from 'pinia';
 
 import { unified } from 'unified';
@@ -67,7 +67,25 @@ export const useBlogConfig = defineStore('config', () => {
         },
     };
 
-    return { blogger, listTag, listBoard };
+    const listTool: Record<string, Tool> = {
+        'article-editor': {
+            id: 'article-editor',
+            name: '文章编辑器',
+            description: '一个用来编辑本博客文章的编辑器，使用了相同的渲染方式，渲染出来的结果就是展示在文章部分的结果。'
+        },
+        'test-1': {
+            id: 'test-1',
+            name: '测试 1',
+            description: '用来测试工具显示页面'
+        },
+        ...Object.fromEntries(Array.from({ length: 20 }, (_, i) => [`test-${i}`, {
+            id: `test${i}`,
+            name: `测试 ${i}`,
+            description: 'a'.repeat(Math.floor(Math.random() * 100))
+        }]))
+    }
+
+    return { blogger, listTag, listBoard, listTool };
 })
 export const useUserConfig = defineStore('config', () => {
 

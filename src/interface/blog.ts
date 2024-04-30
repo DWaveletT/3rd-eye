@@ -1,4 +1,4 @@
-import type { UserId } from "./enum";
+import type { ToolId, UserId } from "./enum";
 
 interface User {
     id: UserId,
@@ -9,4 +9,12 @@ interface User {
     avatar?: string,
 }
 
-export type { User };
+interface Tool {
+    id: ToolId,
+    
+    name: string,
+    description: string,
+    banner?: string
+}
+
+export type { User, Tool };
