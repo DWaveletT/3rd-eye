@@ -22,7 +22,6 @@ const emptyOptions: Options = {};
  *   Transform.
  */
 export default function rehype3rdCopyCode(options?: Options | undefined | null) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const settings = options || emptyOptions;
 
   /**
@@ -43,12 +42,21 @@ export default function rehype3rdCopyCode(options?: Options | undefined | null) 
 
         for(const code of codeList){
             const node = structuredClone(code);
+            const data = toString(node);
+
+            let count = 0;
+            
+            for(let i = 0; i < data.length;i ++)
+                count += data[i] === '\n' ? 1 : 0;
+
+            const line_number = h('div.line-number', Array.from({ length: count}, (_, i) => h('span.number', (i + 1).toString())));
 
             const container = h('div.code-container', [
+                line_number,
                 node,
                 h(
                     'button.copy-button',
-                    { onclick: 'dispatchEvent(new Event("codecopy", { bubbles: true, cancelable: true }))', data: toString(node) },
+                    { onclick: 'dispatchEvent(new Event("codecopy", { bubbles: true, cancelable: true }))', data: data },
                     typeof settings.content === 'function' ? settings.content() : settings.content
                 )
             ]);

@@ -18,7 +18,7 @@ import rehypeHighlight from 'rehype-highlight';
 
 import rehype3rdToc from '@/plugins/rehype-3rd-toc';
 import rehype3rdCopyCode from '@/plugins/rehype-3rd-copy-code';
-
+import rehype3rdNotice from '@/plugins/rehype-3rd-notice';
 
 import type { HeadlineInfo } from '@/plugins/rehype-3rd-toc';
 
@@ -42,6 +42,9 @@ export const useMarkdown = defineStore('markdown', () => {
         // 将 mdast 转换为 hast
         processor.use(remarkRehype);
 
+        // 添加新的引用块效果
+        processor.use(rehype3rdNotice);
+
         if(options?.headline){
     
             // 给标题级别添加上 id
@@ -49,6 +52,13 @@ export const useMarkdown = defineStore('markdown', () => {
                 prefix: options.headline.prefix,
                 output: options.headline.output
             });
+
+        }
+
+        // 使用 KaTeX 渲染数学公式
+        processor.use(rehypeKatex);
+
+        if(options?.headline){
 
             // 给标题级别添加上链接
             processor.use(rehypeAutoLinkHeadings, {
@@ -65,14 +75,11 @@ export const useMarkdown = defineStore('markdown', () => {
                                 d: 'M192 32h64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H384l0 352c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-352H288V448c0 17.7-14.3 32-32 32s-32-14.3-32-32V352H192c-88.4 0-160-71.6-160-160s71.6-160 160-160z'
                             })
                         ]),
-                        h('span.headline', toString(node))
+                        h('span.headline', node.children)
                       ]
                 }
             });
         }
-
-        // 使用 KaTeX 渲染数学公式
-        processor.use(rehypeKatex);
         
         // 复制代码功能
         processor.use(rehype3rdCopyCode, {

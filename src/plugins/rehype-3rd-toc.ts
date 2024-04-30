@@ -23,22 +23,11 @@ const slugs = new GithubSlugger()
 
 /**
  * Process headlines for my blog.
- *
- * @param {Options | null | undefined} [options]
- *   Configuration (optional).
- * @returns
- *   Transform.
  */
 export default function rehype3rdToc(options?: Options | undefined | null) {
     const settings = options || emptyOptions
     const prefix = settings.prefix || ''
 
-  /**
-   * @param {Root} tree
-   *   Tree.
-   * @returns {undefined}
-   *   Nothing.
-   */
     return function (tree: Root): undefined {
         slugs.reset();
 

@@ -108,6 +108,25 @@
     .code-container {
         position: relative;
 
+        margin-left: 0.5em;
+        margin-right: -0.5em;
+
+        > .line-number {
+            box-sizing: content-box;
+
+            position: absolute;
+            right: 100%;
+
+            padding: 1em 0.5em;
+
+            font-family: consolas;
+
+            > .number {
+                display: block;
+                text-align: right;
+            }
+        }
+
         > .copy-button {
             position: absolute;
 
@@ -159,9 +178,10 @@
     }
     
     .code-container {
-        border: 1px solid rgb(from var(--minor-color-l3) r g b / 0.3);
-        background-color: rgb(from var(--minor-color-l3) r g b / 0.1);
+        border: 1px solid rgb(from var(--minor-color-l3) r g b / 0.5);
+        background-color: rgb(from var(--page-color) r g b / 0.5);
     }
+
 }
 
 .markdown.minor-color {
@@ -190,7 +210,7 @@
 }
 
 code {
-    font-family: consolas;
+    font-family: consolas
 }
 
 ::-webkit-scrollbar {

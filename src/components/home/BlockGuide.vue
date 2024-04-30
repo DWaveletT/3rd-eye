@@ -253,6 +253,8 @@ const expend = ref<Record<string, boolean> >({});
         display: flex;
         justify-content: space-between;
 
+        height: 2.5em;
+
         color: var(--text-minor-color-p);
 
         padding: 0.4em 0.5em;
@@ -315,8 +317,22 @@ const expend = ref<Record<string, boolean> >({});
             }
         }
 
+        @keyframes expand {
+            0% {
+                padding: 0 0.5em;
+                height: 0;
+            }
+            100% {
+                padding: 0.4em 0.5em;
+                height: 2.5em;
+            }
+        }
+
         &.month {
             background-color: var(--minor-color-l5);
+
+            animation-name: expand;
+            animation-duration: 0.5s;
             
             .time-icon {
                 display: inline-flex;
@@ -331,7 +347,6 @@ const expend = ref<Record<string, boolean> >({});
                 border-radius: 50%;
 
                 > .timeline {
-
                     height: 2.5em;
                     width: 2px;
                     background-color: var(--minor-color-l2);

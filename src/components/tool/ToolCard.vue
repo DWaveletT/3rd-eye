@@ -29,7 +29,6 @@ const props = defineProps<{
 .card {
     border: 1px solid var(--minor-color-d1);
 
-    border-radius: 20px;
 }
 
 .header {
