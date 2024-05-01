@@ -25,7 +25,7 @@ jobs:
       
       - name: Setup .npmrc
         run: |
-          npm config set @dwavelett:registry "https://npm.pkg.github.com/DWaveletT"
+          npm config set @dwavelett:registry "https://npm.pkg.github.com"
           npm config set //npm.pkg.github.com/:_authToken $NPM_AUTH_TOKEN
         env:
             NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
