@@ -17,8 +17,6 @@
 import LHeader from './LHeader.vue';
 import LFooter from './LFooter.vue';
 
-import { ElContainer, ElMain } from 'element-plus';
-
 const props = withDefaults(defineProps<{
     background?: "purity" | "picture"
 }>(), {

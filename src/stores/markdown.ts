@@ -10,17 +10,17 @@ import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 
 import { h } from 'hastscript';
-import { toString } from 'hast-util-to-string'
 
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
 
 import rehypeHighlight from 'rehype-highlight';
 
-import rehype3rdToc from '@/plugins/rehype-3rd-toc';
-import rehype3rdCopyCode from '@/plugins/rehype-3rd-copy-code';
-import rehype3rdNotice from '@/plugins/rehype-3rd-notice';
+import rehype3rdToc from '@dwavelett/rehype-3rd-toc';
+import rehype3rdCopyCode from '@dwavelett/rehype-3rd-copy-code';
 
-import type { HeadlineInfo } from '@/plugins/rehype-3rd-toc';
+import remarkNoHtml from '@/plugins/remark-no-html';
+
+import type { HeadlineInfo } from '@dwavelett/rehype-3rd-toc';
 
 export interface ProcessorOption {
     headline?: {
@@ -36,6 +36,9 @@ export const useMarkdown = defineStore('markdown', () => {
         // 将 markdown 解析为 mdast
         processor.use(remarkParse);
 
+        // 不允许使用 HTML
+        processor.use(remarkNoHtml);
+
         // 处理数学公式相关 token
         processor.use(remarkMath);
 
@@ -43,7 +46,7 @@ export const useMarkdown = defineStore('markdown', () => {
         processor.use(remarkRehype);
 
         // 添加新的引用块效果
-        processor.use(rehype3rdNotice);
+        // processor.use(rehype3rdNotice);
 
         if(options?.headline){
     

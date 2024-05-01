@@ -1,5 +1,7 @@
 .body {
     font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+
+    min-height: 100vh;
 }
 
 *, *::before, *::after {
@@ -8,7 +10,7 @@
     font-weight: normal;
 }
 
-:root {
+.color-theme-dark, .color-theme-light {
     --succ-color: #61DE23;
     --warn-color: #F2A218;
     --erro-color: #FF5252;
@@ -35,16 +37,6 @@
     --el-border-color-dark: var(--border-color);
     --el-border-color-darker: var(--border-color);
 }
-
-#app {
-    display: flex;
-    flex-direction: column;
-
-    min-height: 100vh;
-
-    color: var(--main-color-d5);
-}
-
 .markdown {
     h1, h2, h3, h4, h5, h6 {
         margin: 0.5em 0;
@@ -164,6 +156,10 @@
             }
         }
     }
+
+    code {
+        font-family: consolas
+    }
 }
 
 .markdown.main-color {
@@ -207,10 +203,6 @@
 
 .major-title {
     color: var(--major-color-d4);
-}
-
-code {
-    font-family: consolas
 }
 
 ::-webkit-scrollbar {

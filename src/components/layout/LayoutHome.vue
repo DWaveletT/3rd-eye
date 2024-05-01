@@ -11,13 +11,8 @@
 </template>
 
 <script setup lang="ts">
-
 import LHeader from './LHeader.vue';
 import LFooter from './LFooter.vue';
-
-
-import { ElRow, ElCol } from 'element-plus';
-
 
 </script>
 

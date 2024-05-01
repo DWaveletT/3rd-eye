@@ -4,7 +4,7 @@
     </header>
 
     <div class="menu-container">
-        <el-affix @scroll="handleScroll">
+        <el-affix @scroll="handleScroll" :style="{ 'pointer-events': hide ? 'none' : 'auto' }">
         <el-menu class="menu" mode="horizontal" :ellipsis="false" :class="{ hide, move }" router>
             <el-menu-item class="menu-item" index="/" >
                 首页
@@ -30,6 +30,23 @@
             </div>
             
             <div style="flex-grow: 2;" />
+
+            <div class="config">
+                <font-awesome-icon class="language" :icon="faLanguage" size="xl" />
+                <div class="divider" />
+                <el-switch class="switcher" v-model="userConfig.colorTheme" size="large">
+                    <template #inactive-action>
+                        <font-awesome-icon class="star" :icon="faSun" />
+                    </template>
+                    <template #active-action>
+                        <font-awesome-icon class="star" :icon="faMoon" />
+                    </template>
+                </el-switch>
+                <div class="divider" />
+                <font-awesome-icon class="github" :icon="faGithub" size="xl" />
+            </div>
+
+            <div style="margin-right: 2em;" />
             
         </el-menu>
     </el-affix>
@@ -38,22 +55,21 @@
 
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faHeart, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faMagnifyingGlass, faLanguage, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-import { ElMenu, ElMenuItem, ElAffix, ElInput } from 'element-plus';
+import { ElMenu, ElMenuItem, ElAffix, ElInput, ElSwitch } from 'element-plus';
 
 import { ref } from 'vue';
 
-import { useAuth } from '@/stores/auth';
+import { useUserConfig } from '@/stores/config';
 
-const auth = useAuth();
+const userConfig = useUserConfig();
 
 const lastTop = ref(0);
 
 const hide = ref(false);
 const move = ref(false);
-
-const showLogin = ref(false);
 
 const keyword = ref('');
 
@@ -93,10 +109,12 @@ function handleScroll(status: { scrollTop: number, fixed: boolean }){
 
     border-bottom: 5px solid var(--main-color-d2);
 
-    transition: transform 0.1s ease-in-out;
+    top: 0;
+
+    transition: top 0.15s ease-in-out;
 
     &.hide.move {
-        transform: translateY(-100%);
+        top: -100%;
     }
 }
 
@@ -105,7 +123,7 @@ function handleScroll(status: { scrollTop: number, fixed: boolean }){
 }
 
 .menu-item {
-    font-weight: light;
+    font-weight: lighter;
 }
 
 .heart {
@@ -128,6 +146,39 @@ function handleScroll(status: { scrollTop: number, fixed: boolean }){
     fill-opacity: 0.5;
 
     --el-fill-color-blank: rgb(from white r g b / 0.8);
+}
+
+.config {
+    display: flex;
+    align-items: center;
+
+    margin: 0 1em;
+}
+
+.github {
+    height: 1.2em;
+}
+
+.language {
+    height: 1.3em;
+
+    color: var(--text-main-color-h);
+}
+
+.switcher {
+    --el-switch-on-color: #111;
+    --el-switch-off-color: #ddd;
+
+    .star {
+        color: #F0B23D;
+    }
+}
+
+.divider {
+    background-color: var(--main-color);
+    width: 2px;
+    height: 1.5em;
+    margin: 0 0.8em;
 }
 
 </style>

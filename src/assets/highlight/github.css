@@ -1,4 +1,4 @@
-@media (prefers-color-scheme: light) {
+.color-theme-light {
   pre code.hljs {
     display: block;
     overflow-x: auto;

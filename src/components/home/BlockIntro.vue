@@ -3,11 +3,11 @@
         <div class="banner">
             <div class="decoration" />
 
-            <c-avatar class="avatar" :user="blogConfig.blogger" :size="160" />
+            <c-avatar class="avatar" :user="blogger" :size="160" />
         </div>
 
         <div class="introduce">
-            <h3 class="name">{{ blogConfig.blogger.name }}</h3>
+            <h3 class="name">{{ blogger?.name }}</h3>
 
             <ul class="description">
                 <li><font-awesome-icon class="icon" :icon="faBook" />哈尔滨工业大学就读</li>
@@ -63,7 +63,11 @@ import CAvatar from '@/components/common/CAvatar.vue';
 
 import { useBlogConfig } from '@/stores/config';
 
+import { computed } from 'vue';
+
 const blogConfig = useBlogConfig();
+
+const blogger = computed(() => blogConfig.blogger );
 
 function copyQQ(){
     navigator.clipboard.writeText('3104439613').then(

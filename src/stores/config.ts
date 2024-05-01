@@ -3,7 +3,9 @@ import { defineStore } from 'pinia';
 
 import { unified } from 'unified';
 
-export const useBlogConfig = defineStore('config', () => {
+import { ref } from 'vue';
+
+export const useBlogConfig = defineStore('blogConfig', () => {
     const blogger: User = {
         id: 0,
         name: '离散小波变换°',
@@ -87,6 +89,8 @@ export const useBlogConfig = defineStore('config', () => {
 
     return { blogger, listTag, listBoard, listTool };
 })
-export const useUserConfig = defineStore('config', () => {
+export const useUserConfig = defineStore('userConfig', () => {
+    const colorTheme = ref<boolean>(window.matchMedia('(prefers-color-scheme: dark)').matches);
 
+    return { colorTheme };
 })

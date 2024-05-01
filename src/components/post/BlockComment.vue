@@ -69,10 +69,10 @@ onMounted(() => {
 });
 
 function doReplyLike(rid: ReplyId){
-    console.log('do reply like.');
+    console.log(rid, 'do reply like.');
 }
 function doReplyDislike(rid: ReplyId){
-    console.log('do reply like.');
+    console.log(rid, 'do reply like.');
 }
 
 

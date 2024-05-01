@@ -1,49 +1,47 @@
-@media (prefers-color-scheme: dark) {
-    :root {
-        --card-b-color: #262626;
-        --card-f-color: #333333;
-        
-        --main-color-l5: #152E0E;
-        --main-color-l4: #1A3B12;
-        --main-color-l3: #244F18;
-        --main-color-l2: #2B5E1C;
-        --main-color-l1: #316E21;
-        --main-color: #3A8027;
-        --main-color-d1: #42912C;
-        --main-color-d2: #4CA833;
-        --main-color-d3: #3BB01B;
-        --main-color-d4: #3CBF18;
-        --main-color-d5: #3ACF11;
+.color-theme-dark {
+    --card-b-color: #262626;
+    --card-f-color: #333333;
+    
+    --main-color-l5: #152E0E;
+    --main-color-l4: #1A3B12;
+    --main-color-l3: #244F18;
+    --main-color-l2: #2B5E1C;
+    --main-color-l1: #316E21;
+    --main-color: #3A8027;
+    --main-color-d1: #42912C;
+    --main-color-d2: #4CA833;
+    --main-color-d3: #3BB01B;
+    --main-color-d4: #3CBF18;
+    --main-color-d5: #3ACF11;
 
-        --minor-color-l5: #2E2D15;
-        --minor-color-l4: #3D3C1C;
-        --minor-color-l3: #474620;
-        --minor-color-l2: #525025;
-        --minor-color-l1: #63622D;
-        --minor-color: #FFF865;
-        --minor-color-d1: #787736;
-        --minor-color-d2: #8A883F;
-        --minor-color-d3: #999746;
-        --minor-color-d4: #A19E2C;
-        --minor-color-d5: #CCC807;
+    --minor-color-l5: #2E2D15;
+    --minor-color-l4: #3D3C1C;
+    --minor-color-l3: #474620;
+    --minor-color-l2: #525025;
+    --minor-color-l1: #63622D;
+    --minor-color: #FFF865;
+    --minor-color-d1: #787736;
+    --minor-color-d2: #8A883F;
+    --minor-color-d3: #999746;
+    --minor-color-d4: #A19E2C;
+    --minor-color-d5: #CCC807;
 
-        --silk-color: #FFF865;
-        --back-color: #242424;
+    --silk-color: #FFF865;
+    --back-color: #242424;
 
-        --border-color: white;
+    --border-color: white;
 
-        --text-main-color-h: #64D146;
-        --text-main-color-p: #EEFFEA;
-        --text-main-color-i: #8FD97B;
+    --text-main-color-h: #64D146;
+    --text-main-color-p: #EEFFEA;
+    --text-main-color-i: #8FD97B;
 
-        --text-minor-color-h: #FFF74B;
-        --text-minor-color-p: #FFFEDA;
-        --text-minor-color-i: #CCCA8E;
+    --text-minor-color-h: #FFF74B;
+    --text-minor-color-p: #FFFEDA;
+    --text-minor-color-i: #CCCA8E;
 
 
-        --page-color: #080808;
-        --fill-color: #202020;
+    --page-color: #080808;
+    --fill-color: #202020;
 
-        --border-color: #303030;
-    }
+    --border-color: #303030;
 }

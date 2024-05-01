@@ -10,8 +10,6 @@
 
 <script setup lang="ts">
 
-import { ElFooter } from 'element-plus';
-
 </script>
 
 <style scoped lang="scss">

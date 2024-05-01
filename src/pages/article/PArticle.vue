@@ -32,7 +32,7 @@ import { useArticle } from '@/stores/article';
 
 import type { Post } from '@/interface';
 
-import type { HeadlineInfo } from '@/plugins/rehype-3rd-toc';
+import type { HeadlineInfo } from '@dwavelett/rehype-3rd-toc';
 
 const article = useArticle();
 

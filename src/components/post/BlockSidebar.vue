@@ -56,7 +56,7 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faThumbsUp, faThumbsDown, faComment, faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 
-import type { HeadlineInfo } from '@/plugins/rehype-3rd-toc';
+import type { HeadlineInfo } from '@dwavelett/rehype-3rd-toc';
 
 import { ElAnchor, ElAnchorLink, ElAffix, ElScrollbar } from 'element-plus';
 
