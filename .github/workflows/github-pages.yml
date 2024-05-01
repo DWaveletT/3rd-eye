@@ -28,7 +28,7 @@ jobs:
           npm set @dwavelett:registry "https://npm.pkg.github.com"
           npm set //npm.pkg.github.com/:username ${{ github.actor }}
           npm set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
-          npm set //npm.pkg.github.com/:always-auth true
+          npm set always-auth true
       
       - name: Download packages
         run: npm install --production
