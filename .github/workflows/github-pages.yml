@@ -22,11 +22,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 'latest'
+      
+      - name: Setup .npmrc
+        run: |
+          npm config set @dwavelett:registry "https://npm.pkg.github.com/DWaveletT"
+          npm config set //npm.pkg.github.com/:_authToken $NPM_AUTH_TOKEN
+        env:
+            NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Download packages
+        run: npm install --production
 
-      - run: npm install --production
-      - run: npm run build-only
+      - name: Build
+        run: npm run build-only
 
-      - name: deploy
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/main'
         with:
