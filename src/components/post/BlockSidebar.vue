@@ -102,7 +102,7 @@ function handleStep(url: string){
 
     --el-color-primary: var(--text-minor-color-h);
 
-    background-color: rgb(from var(--page-color) r g b / 0.5);
+    background-color: rgb(from var(--page-color) r g b / 0.7);
 }
 
 .toollist {

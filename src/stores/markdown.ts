@@ -19,6 +19,8 @@ import rehype3rdToc from '@dwavelett/rehype-3rd-toc';
 import rehype3rdCopyCode from '@dwavelett/rehype-3rd-copy-code';
 
 import remarkNoHtml from '@/plugins/remark-no-html';
+import remarkDirective from 'remark-directive';
+import remarkCallouts from '@/plugins/remark-callouts';
 
 import type { HeadlineInfo } from '@dwavelett/rehype-3rd-toc';
 
@@ -38,6 +40,12 @@ export const useMarkdown = defineStore('markdown', () => {
 
         // 不允许使用 HTML
         processor.use(remarkNoHtml);
+
+        // 允许使用标注
+        processor.use(remarkDirective);
+        
+        // 允许使用标注
+        processor.use(remarkCallouts);
 
         // 处理数学公式相关 token
         processor.use(remarkMath);
@@ -65,10 +73,12 @@ export const useMarkdown = defineStore('markdown', () => {
 
             // 给标题级别添加上链接
             processor.use(rehypeAutoLinkHeadings, {
-                behavior: 'wrap',
+                behavior: 'prepend',
+                properties: { style: 'display: inline-block'},
                 content(node) {
+                    console.log(node);
                     return [
-                        h('svg.link', {
+                        h('svg.head-link', {
                             xmlns: "http://www.w3.org/2000/svg",
                             viewBox: "0 0 448 512",
                             comment: "Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc."
@@ -77,9 +87,8 @@ export const useMarkdown = defineStore('markdown', () => {
                                 fill: 'currentColor',
                                 d: 'M192 32h64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H384l0 352c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-352H288V448c0 17.7-14.3 32-32 32s-32-14.3-32-32V352H192c-88.4 0-160-71.6-160-160s71.6-160 160-160z'
                             })
-                        ]),
-                        h('span.headline', node.children)
-                      ]
+                        ])
+                    ];
                 }
             });
         }

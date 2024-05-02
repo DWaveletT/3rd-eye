@@ -10,11 +10,41 @@
     font-weight: normal;
 }
 
+$erro-color-raw: 'F56C6C';
+$warn-color-raw: 'E6A23C';
+$succ-color-raw: '67C23A';
+$info-color-raw: '409EFF';
+
+$erro-color: #F56C6C;
+$warn-color: #E6A23C;
+$succ-color: #67C23A;
+$info-color: #409EFF;
+
+.color-theme-light {
+    --callout-head-info: #{darken($info-color, 30%)};
+    --callout-head-succ: #{darken($succ-color, 30%)};
+    --callout-head-warn: #{darken($warn-color, 30%)};
+    --callout-head-erro: #{darken($erro-color, 30%)};
+
+    --callout-text-info: #{darken($info-color, 50%)};
+    --callout-text-succ: #{darken($succ-color, 50%)};
+    --callout-text-warn: #{darken($warn-color, 50%)};
+    --callout-text-erro: #{darken($erro-color, 50%)};
+}
+
+.color-theme-dark {
+    --callout-head-info: #{lighten($info-color, 30%)};
+    --callout-head-succ: #{lighten($succ-color, 30%)};
+    --callout-head-warn: #{lighten($warn-color, 30%)};
+    --callout-head-erro: #{lighten($erro-color, 30%)};
+}
+
 .color-theme-dark, .color-theme-light {
-    --succ-color: #61DE23;
-    --warn-color: #F2A218;
-    --erro-color: #FF5252;
-    --info-color: #18BBF2;
+
+    --succ-color: $succ-color;
+    --warn-color: $warn-color;
+    --erro-color: $erro-color;
+    --info-color: $info-color;
 
     --el-text-color-primary: var(--text-main-color-p);
     --el-text-color-regular: var(--text-main-color-p);
@@ -37,50 +67,44 @@
     --el-border-color-dark: var(--border-color);
     --el-border-color-darker: var(--border-color);
 }
+
 .markdown {
-    h1, h2, h3, h4, h5, h6 {
-        margin: 0.5em 0;
+    svg {
+        &.head-link {
 
-        position: relative;
+            margin: 0 5px -0.2em -25px;
 
-        > a {
-            display: flex;
-            align-items: center;
+            opacity: 0.5;
+            color: var(--text-color-h);
 
-            text-decoration: none;
-            color: var(--text-main-color-h);
+            transition: opacity 0.2s ease-in-out;
+        }
 
-            .link {
-                position: absolute;
-    
-                width: 20px;
-                height: 20px;
-    
-                z-index: 100;
-    
-                margin-left: -20px;
-    
-                opacity: 0;
-                color: var(--text-main-color-h);
-    
-                transition: opacity 0.2s ease-in-out;
-            }
-    
-            &:hover {
-                .link {
-                    opacity: 1;
-                }
-            }
-    
-            .headline {
-                text-decoration: none;
+        &:hover {
+            &.head-link {
+                opacity: 1;
             }
         }
     }
 
+    h1, h2, h3, h4, h5, h6 {
+        
+        color: var(--text-color-h);
+        margin: 0.5em 0;
+        position: relative;
+    }
+
+    ol, ul {
+        padding-inline-start: 1.5em;
+        > li {
+            margin: 0.4em 0;
+        }
+    }
+
     p {
+        color: var(--text-color-p);
         text-align: justify;
-        margin: 0.8em 0;
+        margin: 0.5em 0;
     }
 
     strong {
@@ -88,16 +112,153 @@
     }
 
     em {
+        color: var(--text-color-i);
         font-style: normal;
         font-family: Georgia, "Times New Roman", Times, Kai, "Kaiti SC", KaiTi, BiauKai, FontAwesome, serif;
     }
-    
-    ::-webkit-scrollbar-track {
+
+    blockquote {
+        margin: 0.5em 0;
+        padding: 0.2em 0 0.2em 0.8em;
+
+        border-left: 5px solid var(--minor-color);
+        background-color: rgb(from var(--minor-color-l3) r g b / 0.3);
+        
+        blockquote {
+            margin-left: -0.2em;
+            background-color: transparent;
+        }
+    }
+
+    .callout {
+        margin: 0.5em 0;
+        padding: 0.1em 0.5em;
+        border-radius: 5px;
+
+        background-color: rgb(from var(--page-color) / 0.6);
+
+        overflow: hidden;
+
+        .code-container {
+            margin: 0.5em 0em 0.5em 2em;
+        }
+
+        &.has-headline {
+            > p:first-child {
+                margin: -0.1em -0.5em 0 -0.5em;
+                padding: 0.5em;
+            }
+        }
+
+        &.info {
+            p, li {
+                color: var(--callout-text-info);
+            }
+
+            border: 1px solid $info-color;
+            box-shadow: 2px 2px 5px rgb(from $info-color r g b / 0.5);
+
+            &.has-headline {
+                > p:first-child {
+                    background-color: rgb(from $info-color r g b / 0.4);
+                    color: var(--callout-head-info);
+                    
+                    &::before {
+                        float: left;
+                        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" fill="%23#{$info-color-raw}"/></svg>');
+
+                        margin: 2px 0.4em 2px 0;
+                        width: 18px;
+                        height: 18px;
+                    }
+                }
+            }
+        }
+        
+        &.error {
+            p, li {
+                color: var(--callout-text-erro);
+            }
+            border: 1px solid $erro-color;
+            box-shadow: 2px 2px 5px rgb(from $erro-color r g b / 0.5);
+
+            &.has-headline {
+                > p:first-child {
+                    background-color: rgb(from $erro-color r g b / 0.4);
+                    color: var(--callout-head-erro);
+                    
+                    &::before {
+                        float: left;
+                        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" fill="%23#{$erro-color-raw}"/></svg>');
+
+                        margin: 2px 0.4em 2px 0;
+                        width: 18px;
+                        height: 18px;
+                    }
+                }
+            }
+        }
+
+        &.success {
+            p, li {
+                color: var(--callout-text-succ);
+            }
+            border: 1px solid $succ-color;
+            box-shadow: 2px 2px 5px rgb(from $succ-color r g b / 0.5);
+
+            &.has-headline {
+                > p:first-child {
+                    background-color: rgb(from $succ-color r g b / 0.4);
+                    color: var(--callout-head-succ);
+                    
+                    &::before {
+                        float: left;
+                        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" fill="%23#{$succ-color-raw}"/></svg>');
+
+                        margin: 2px 0.4em 2px 0;
+                        width: 18px;
+                        height: 18px;
+                    }
+                }
+            }
+        }
+
+        &.warning {
+            p, li {
+                color: var(--callout-text-warn);
+            }
+            border: 1px solid $warn-color;
+            box-shadow: 2px 2px 5px rgb(from $warn-color r g b / 0.5);
+
+            &.has-headline {
+                > p:first-child {
+                    background-color: rgb(from $warn-color r g b / 0.4);
+                    color: var(--callout-head-warn);
+                    
+                    &::before {
+                        float: left;
+                        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" fill="%23#{$warn-color-raw}"/></svg>');
+
+                        margin: 2px 0.4em 2px 0;
+                        width: 18px;
+                        height: 18px;
+                    }
+                }
+            }
+        }
+    }
+
+    .callout .callout {
         background-color: transparent;
-        border-radius: 10px;
+    }
+
+    code {
+        font-family: consolas
     }
 
     .code-container {
+        border: 1px solid rgb(from var(--minor-color-l3) r g b / 0.5);
+        background-color: rgb(from var(--page-color) r g b / 0.5);
         position: relative;
 
         margin-left: 0.5em;
@@ -136,7 +297,7 @@
                 0.2s ease-in-out color,
                 0.2s ease-in-out background-color;
 
-            color: var(--text-minor-color-h);
+            color: var(--minor-color);
             background-color: var(--minor-color-l4);
 
             border: none;
@@ -155,54 +316,29 @@
                 background-color: var(--text-minor-color-h);
             }
         }
-    }
 
-    code {
-        font-family: consolas
-    }
-}
-
-.markdown.main-color {
-    color: var(--text-main-color-p);
-
-    em {
-        color: var(--text-main-color-i);
+        .hljs {
+            background-color: transparent;
+        }
     }
     
-    .hljs {
-        background-color: inherit;
-    }
-    
-    .code-container {
-        border: 1px solid rgb(from var(--minor-color-l3) r g b / 0.5);
-        background-color: rgb(from var(--page-color) r g b / 0.5);
-    }
-
-}
-
-.markdown.minor-color {
-    color: var(--text-minor-color-p);
-
-    em {
-        color: var(--text-minor-color-i);
-    }
-
-    .hljs {
-        background-color: inherit;
-    }
-    
-    .code-container {
-        border: 1px solid rgb(from var(--minor-color-l3) r g b / 0.3);
-        background-color: rgb(from var(--minor-color-l3) r g b / 0.1);
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 10px;
     }
 }
 
-.main-title {
-    color: var(--main-color-d4);
+
+.markdown.main-color, .markdown .main-color {
+    --text-color-h: var(--text-main-color-h);
+    --text-color-i: var(--text-main-color-i);
+    --text-color-p: var(--text-main-color-p);
 }
 
-.major-title {
-    color: var(--major-color-d4);
+.markdown.minor-color, .markdown .main-color {
+    --text-color-h: var(--text-minor-color-h);
+    --text-color-i: var(--text-minor-color-i);
+    --text-color-p: var(--text-minor-color-p);
 }
 
 ::-webkit-scrollbar {
