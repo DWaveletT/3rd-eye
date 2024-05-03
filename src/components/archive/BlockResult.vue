@@ -90,7 +90,7 @@ export interface Result{
 export interface Params{
     keyword: string,
     tag: TagId[],
-    board: BoardId,
+    board?: BoardId,
     time: [number, number]
 };
 
@@ -147,9 +147,10 @@ async function doSearch(){
         if(ok === false)
             continue;
 
+        let val = 1;
+
         const text = post.title + '#' + post.auth + '#' + post.summary + '#' + getTagText(post.tag);
         
-        let val = 1;
         let cur = 0, last = -1;
         for(let i = 0;i < text.length;i ++){
             if(text[i] === params.value.keyword[cur]){

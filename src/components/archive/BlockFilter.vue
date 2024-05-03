@@ -68,7 +68,7 @@
 <script setup lang="ts">
 import type { TagId } from '@/interface';
 
-import { ElTag, ElAffix, ElInput, ElButton, ElDatePicker, ElSelect, ElOption } from 'element-plus';
+import { ElAffix, ElInput, ElButton, ElDatePicker, ElSelect, ElOption } from 'element-plus';
 
 import CTag from '@/components/common/CTag.vue';
 

@@ -22,6 +22,15 @@ import LayoutFull from '@/components/layout/LayoutFull.vue';
 
 import { ElCard, ElButton } from 'element-plus';
 
+import { useUtil } from '@/stores/util';
+import { onMounted } from 'vue';
+
+const util = useUtil();
+
+onMounted(() => {
+    util.setTitle('满身疮痍……');
+});
+
 </script>
 
 <style scoped lang="scss">

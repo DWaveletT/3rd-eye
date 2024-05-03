@@ -53,6 +53,7 @@ const root = ref<HeadlineInfo>({
 async function doGetPost(id: string){
     article.readPostList().then((posts) => {
         post.value = posts[id];
+        util.setTitle(post.value.title + ' | 第三只眼');
     }).catch((e) => {
         ElNotification({
             type: 'error',

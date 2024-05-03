@@ -63,6 +63,11 @@ $info-color: #409EFF;
     --el-color-primary-light-8: var(--main-color-l4);
     --el-color-primary-light-9: var(--main-color-l5);
 
+    --el-menu-active-color: var(--main-color);
+    --el-menu-hover-text-color: var(--main-color);
+    --el-menu-hover-bg-color: var(--main-color-l5);
+    --el-menu-text-color: var(--text-main-color-p);
+
     --el-fill-color-blank: var(--fill-color);
 
     --el-border-color: var(--border-color);

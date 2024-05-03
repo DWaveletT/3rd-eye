@@ -3,7 +3,19 @@ import { defineStore } from 'pinia';
 import { useRoute } from 'vue-router';
 import { isArray } from 'element-plus/es/utils/types.mjs';
 
+import { ref } from 'vue';
+
 export const useUtil = defineStore('util', () => {
+    const title = ref('第三只眼');
+
+    function getTitle(){
+        return title;
+    }
+    function setTitle(newTitle: string){
+        title.value = newTitle;
+
+        document.title = newTitle;
+    }
 
     const route = useRoute();
 
@@ -77,7 +89,8 @@ export const useUtil = defineStore('util', () => {
 
     return {
         parseParamInt, parseParamString,
-        parseQueryInt, parseQueryString
+        parseQueryInt, parseQueryString,
+        getTitle, setTitle,
     }
 });
 

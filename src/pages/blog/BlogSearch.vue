@@ -17,16 +17,24 @@ import BlockFilter from '@/components/archive/BlockFilter.vue';
 
 import { type Params } from '@/components/archive/BlockResult.vue';
 
-import { ref } from 'vue';
+import { useUtil } from '@/stores/util';
+
+import { onMounted, ref } from 'vue';
+
+const util = useUtil();
 
 const params = ref<Params>({
     keyword: '',
     tag: [],
+    board: undefined,
     time: [0, Infinity]
 });
 
 const engine = ref<InstanceType<typeof BlockResult> | null>();
 
+onMounted(() => {
+    util.setTitle('文章检索 | 第三只眼');
+});
 
 </script>
 

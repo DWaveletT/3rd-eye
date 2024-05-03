@@ -17,7 +17,6 @@
                         <div class="rpart">
                             <block-guide :posts="posts" />
                         </div>
-                        
                     </el-affix>
                 </el-col>
             </el-row>
@@ -39,6 +38,10 @@ import { useArticle } from '@/stores/article';
 import type { Post } from '@/interface';
 import { onMounted, ref } from 'vue';
 
+import { useUtil } from '@/stores/util';
+
+const util = useUtil();
+
 const article = useArticle();
 const posts = ref<Record<string, Post> >({});
 
@@ -46,6 +49,7 @@ onMounted(() => {
     article.readPostList().then(( result ) => {
         posts.value = result
     });
+    util.setTitle('第三只眼');
 })
 
 

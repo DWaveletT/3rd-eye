@@ -100,7 +100,6 @@ function handleScroll(status: { scrollTop: number, fixed: boolean }){
 }
 
 .menu {
-    --el-menu-text-color: var(--text-main-color-p);
     background: linear-gradient(
         to bottom,
         rgb(from var(--main-color-l2) r g b / 0.4),
