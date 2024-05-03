@@ -76,7 +76,7 @@ const keyword = ref('');
 function handleScroll(status: { scrollTop: number, fixed: boolean }){
     move.value = status.fixed;
 
-    if(status.scrollTop < lastTop.value){
+    if(status.scrollTop < lastTop.value || status.scrollTop < 10){
         hide.value = false;
     } else {
         hide.value = true;

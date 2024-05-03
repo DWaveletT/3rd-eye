@@ -26,10 +26,10 @@ $info-color: #409EFF;
     --callout-head-warn: #{darken($warn-color, 30%)};
     --callout-head-erro: #{darken($erro-color, 30%)};
 
-    --callout-text-info: #{darken($info-color, 50%)};
-    --callout-text-succ: #{darken($succ-color, 50%)};
-    --callout-text-warn: #{darken($warn-color, 50%)};
-    --callout-text-erro: #{darken($erro-color, 50%)};
+    --callout-text-info: #{darken($info-color, 40%)};
+    --callout-text-succ: #{darken($succ-color, 40%)};
+    --callout-text-warn: #{darken($warn-color, 40%)};
+    --callout-text-erro: #{darken($erro-color, 40%)};
 }
 
 .color-theme-dark {
@@ -37,6 +37,11 @@ $info-color: #409EFF;
     --callout-head-succ: #{lighten($succ-color, 30%)};
     --callout-head-warn: #{lighten($warn-color, 30%)};
     --callout-head-erro: #{lighten($erro-color, 30%)};
+
+    --callout-text-info: #{lighten($info-color, 40%)};
+    --callout-text-succ: #{lighten($succ-color, 40%)};
+    --callout-text-warn: #{lighten($warn-color, 40%)};
+    --callout-text-erro: #{lighten($erro-color, 40%)};
 }
 
 .color-theme-dark, .color-theme-light {
@@ -74,17 +79,17 @@ $info-color: #409EFF;
 
             margin: 0 5px -0.2em -25px;
 
-            opacity: 0.5;
+            opacity: 0;
             color: var(--text-color-h);
 
             transition: opacity 0.2s ease-in-out;
-        }
 
-        &:hover {
-            &.head-link {
-                opacity: 1;
+            &:hover {
+                color: $succ-color;
+                opacity: 1 !important;
             }
         }
+
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -92,6 +97,12 @@ $info-color: #409EFF;
         color: var(--text-color-h);
         margin: 0.5em 0;
         position: relative;
+
+        &:hover {
+            svg.head-link {
+                opacity: 0.5;
+            }
+        }
     }
 
     ol, ul {
@@ -128,6 +139,12 @@ $info-color: #409EFF;
             margin-left: -0.2em;
             background-color: transparent;
         }
+    }
+
+    .video {
+        width: 100%;
+        
+        aspect-ratio: 16 / 9;
     }
 
     .callout {
@@ -189,7 +206,7 @@ $info-color: #409EFF;
                     
                     &::before {
                         float: left;
-                        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" fill="%23#{$erro-color-raw}"/></svg>');
+                        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" fill="%23#{$erro-color-raw}"/></svg>');
 
                         margin: 2px 0.4em 2px 0;
                         width: 18px;
@@ -213,7 +230,7 @@ $info-color: #409EFF;
                     
                     &::before {
                         float: left;
-                        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" fill="%23#{$succ-color-raw}"/></svg>');
+                        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" fill="%23#{$succ-color-raw}"/></svg>');
 
                         margin: 2px 0.4em 2px 0;
                         width: 18px;
@@ -237,7 +254,7 @@ $info-color: #409EFF;
                     
                     &::before {
                         float: left;
-                        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" fill="%23#{$warn-color-raw}"/></svg>');
+                        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" fill="%23#{$warn-color-raw}"/></svg>');
 
                         margin: 2px 0.4em 2px 0;
                         width: 18px;
@@ -348,15 +365,24 @@ $info-color: #409EFF;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--page-color);
-    border-radius: 10px;
+    width: 1em;
 }
 
 ::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 10px;
+    width: 1em;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+html {
+    overflow: auto;
+    height: 100%;
+}
+body {
+    overflow: hidden;
+    height: auto;
 }

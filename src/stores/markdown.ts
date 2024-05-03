@@ -20,6 +20,7 @@ import rehype3rdCopyCode from '@dwavelett/rehype-3rd-copy-code';
 
 import remarkNoHtml from '@/plugins/remark-no-html';
 import remarkDirective from 'remark-directive';
+import remarkVideo from '@/plugins/remark-video';
 import remarkCallouts from '@/plugins/remark-callouts';
 
 import type { HeadlineInfo } from '@dwavelett/rehype-3rd-toc';
@@ -46,6 +47,9 @@ export const useMarkdown = defineStore('markdown', () => {
         
         // 允许使用标注
         processor.use(remarkCallouts);
+
+        // 允许插入视频
+        processor.use(remarkVideo);
 
         // 处理数学公式相关 token
         processor.use(remarkMath);
@@ -76,7 +80,6 @@ export const useMarkdown = defineStore('markdown', () => {
                 behavior: 'prepend',
                 properties: { style: 'display: inline-block'},
                 content(node) {
-                    console.log(node);
                     return [
                         h('svg.head-link', {
                             xmlns: "http://www.w3.org/2000/svg",

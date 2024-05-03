@@ -3,8 +3,8 @@
         <el-card class="card" shadow="hover">
             <div class="info">
                 <div class="title">
-                    <div class="head" @click="gotoArticle(post.id)">
-                        <h2 style="cursor: pointer;">{{ post.title }}</h2>
+                    <div class="head-container" @click="gotoArticle(post.id)">
+                        <h2 class="head" style="cursor: pointer;">{{ post.title }}</h2>
                         <div class="decoration" />
                     </div>
                     
@@ -82,8 +82,7 @@ function gotoArticle(id: string){
     fill-opacity: 0.7;
     color: var(--text-minor-color-p);
 
-    display: flex;
-    justify-content: space-between;
+    display: block;
 
     position: relative;
 
@@ -107,11 +106,24 @@ function gotoArticle(id: string){
 
 .title {
     height: 5em;
-    text-overflow: ellipsis;
 
-    > .head {
+    margin-top: -0.5em;
+    margin-right: 1em;
+
+    > .head-container {
         display: inline-block;
         transition: 0.2s ease-in-out color;
+
+        width: 100%;
+
+        > .head {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+
+            text-wrap: nowrap;
+
+        }
 
         > .decoration {
             position: absolute;
@@ -134,10 +146,17 @@ function gotoArticle(id: string){
     }
 
     > .tags {
-        margin-top: 0.5em;
+        margin-top: 0.2em;
+
+        overflow: overlay;
+        text-wrap: nowrap;
 
         > :not(:last-child){
             margin-right: 0.2em;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
         }
     }
 }

@@ -4,10 +4,7 @@
         <div class="decoration" />
 
         <div class="tag-list">
-            <div class="item" v-for="tag in blogConfig.listTag" :key="tag.id" :style="`--tag-color: ${ tag.color }`" >
-                <div class="name">{{ tag.name }}</div>
-                <div class="count">{{ countTag[tag.id] }}</div>
-            </div>
+            <c-tag v-for="tag in blogConfig.listTag" :key="tag.id" countable :tag="tag" :count="countTag[tag.id]" />
         </div>
     </el-card>
     <el-card class="card">
@@ -79,6 +76,8 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import type { Post, TagId } from '@/interface';
 
 import { ElCard, ElTag } from 'element-plus';
+
+import CTag from '@/components/common/CTag.vue';
 
 import { useBlogConfig } from '@/stores/config';
 import { computed, ref } from 'vue';
@@ -187,35 +186,6 @@ const expend = ref<Record<string, boolean> >({});
 .tag-list {
     margin-left:  -0.5em;
     margin-right: -0.5em;
-    
-    > .item {
-        display: inline-flex;
-        align-items: center;
-
-        border: 1px solid var(--minor-color-l2);
-
-        border-radius: 4px;
-        overflow: hidden;
-
-        font-size: x-small;
-        margin: 0.2em;
-
-        > .name {
-            display: inline-block;
-            padding: 0.4em 0.8em;
-            height: 100%;
-            background-color: var(--tag-color);
-            color: hsl(from var(--tag-color) h 20 100);
-        }
-
-        > .count {
-            display: inline-block;
-            padding: 0.4em 0.8em;
-            height: 100%;
-            background-color: var(--minor-color-l5);
-            color: var(--text-minor-color-p);
-        }
-    }
 }
 
 .board-list {

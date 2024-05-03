@@ -2,8 +2,8 @@
     <aside class="aside" :class="{ hide }">
 
         <el-affix :offset="25" target=".aside">
-            <section class="toc">
-                <h3 style="margin-bottom: 10px">目录</h3>
+            <section v-if="props.root.child.length > 0" class="toc">
+                <h3 class="title">目录</h3>
 
                 <el-scrollbar :max-height="400" class="scrollbar" ref="table">
                     <el-anchor class="toc-list" @change="handleStep">
@@ -26,7 +26,7 @@
                 </el-scrollbar>
             </section>
 
-            <h3 style="margin-bottom: 10px">随便看看</h3>
+            <h3 class="title">随便看看</h3>
         </el-affix>
     </aside>
 
@@ -93,6 +93,11 @@ function handleStep(url: string){
 
 <style scoped lang="scss">
 .toc {
+    margin-bottom: 1em;
+}
+
+.title {
+    color: var(--text-minor-color-h);
     margin-bottom: 1em;
 }
 
