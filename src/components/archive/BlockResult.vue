@@ -1,67 +1,72 @@
 <template>
     <div class="result-area">
         <el-card class="result">
-            <div class="result-header">
-                <div>
-                    <h2 style="
-                        color: var(--text-minor-color-h);
-                        display: inline-block;
-                    ">搜索结果</h2>
-
-                    <span style="
-                        margin-left: 0.5em;
-                        color: var(--text-minor-color-i);
-                    ">共 {{ result.length }} 条</span>
-                </div>
-
-                <div>
-                    <el-select placeholder="排序方式" v-model="order" @change="doChangeOrder" style="width: 100px;">
-                        <el-option label="默认" value="default" />
-                        <el-option label="最新文章" value="time-new" />
-                        <el-option label="最旧文章" value="time-old" />
-                    </el-select>
-                </div>
+            <div v-show="searching">
+                <c-pray />
             </div>
-            
-            <el-pagination
-                :total="result.length" :page-size="20" v-model:current-page="page"
-                layout="prev, pager, next" 
-                hide-on-single-page
-                background 
-                class="pagination"
-            />
+            <div v-show="!searching">
+                <div class="result-header">
+                    <div>
+                        <h2 style="
+                            color: var(--text-minor-color-h);
+                            display: inline-block;
+                        ">搜索结果</h2>
 
-            <div class="result-container">
-                <div class="item" v-for="{ post } in resultShow" :key="post.id">
-                    <div class="header">
-                        <div class="title-container">
-                            <span class="title" @click="router.push('/article/' + post.id)">{{ post.title }}</span>
-                        </div>
-                        <div class="tag-list">
-                            <span class="tag" v-for="tag in post.tag" :key="tag">
-                                {{ blogConfig.listTag[tag]?.name || '未知标签' }}
-                            </span>
-                        </div>
-                        <div class="author">
-                            {{ post.auth.name }} / <c-date :date="new Date(post.time)" />
-                        </div>
+                        <span style="
+                            margin-left: 0.5em;
+                            color: var(--text-minor-color-i);
+                        ">共 {{ result.length }} 条</span>
                     </div>
-                    <div class="summary-container" @click="router.push('/article/' + post.id)">
-                        <div class="summary">
-                            {{ post.summary }}
-                        </div>
-                        <div class="decoration" />
+
+                    <div>
+                        <el-select placeholder="排序方式" v-model="order" @change="doChangeOrder" style="width: 100px;">
+                            <el-option label="默认" value="default" />
+                            <el-option label="最新文章" value="time-new" />
+                            <el-option label="最旧文章" value="time-old" />
+                        </el-select>
                     </div>
                 </div>
+                
+                <el-pagination
+                    :total="result.length" :page-size="20" v-model:current-page="page"
+                    layout="prev, pager, next" 
+                    hide-on-single-page
+                    background 
+                    class="pagination"
+                />
+
+                <div class="result-container">
+                    <div class="item" v-for="{ post } in resultShow" :key="post.id">
+                        <div class="header">
+                            <div class="title-container">
+                                <span class="title" @click="router.push('/article/' + post.id)">{{ post.title }}</span>
+                            </div>
+                            <div class="tag-list">
+                                <span class="tag" v-for="tag in post.tag" :key="tag">
+                                    {{ blogConfig.listTag[tag]?.name || '未知标签' }}
+                                </span>
+                            </div>
+                            <div class="author">
+                                {{ post.auth.name }} / <c-date :date="new Date(post.time)" />
+                            </div>
+                        </div>
+                        <div class="summary-container" @click="router.push('/article/' + post.id)">
+                            <div class="summary">
+                                {{ post.summary }}
+                            </div>
+                            <div class="decoration" />
+                        </div>
+                    </div>
+                </div>
+                
+                <el-pagination
+                    :total="result.length" :page-size="20" v-model:current-page="page"
+                    layout="prev, pager, next" 
+                    hide-on-single-page
+                    background 
+                    class="pagination"
+                />
             </div>
-            
-            <el-pagination
-                :total="result.length" :page-size="20" v-model:current-page="page"
-                layout="prev, pager, next" 
-                hide-on-single-page
-                background 
-                class="pagination"
-            />
         </el-card>
     </div>
 </template>
@@ -75,11 +80,13 @@ import { ElPagination } from 'element-plus';
 import { useArticle } from '@/stores/article';
 import { useBlogConfig } from '@/stores/config';
 
+import CPray from '@/components/common/CPray.vue';
 import CDate from '@/components/common/CDate.vue';
 
 import { useRouter } from 'vue-router';
 
 import { onMounted, ref, computed } from 'vue';
+
 
 const router = useRouter();
 
@@ -124,8 +131,16 @@ function getTagText(tags: TagId[]){
     return result;
 }
 
+const searching  = ref(false);
+
+// function sleep(time: number){
+//     return new Promise(resolve => setTimeout(resolve, time));
+// }
+
 async function doSearch(){
+    searching.value = true;
     const articles = await article.readPostList();
+    searching.value = false;
 
     result.value = [];
     

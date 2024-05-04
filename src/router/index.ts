@@ -23,6 +23,11 @@ const router = createRouter({
       component: () => import('@/pages/tool/ToolHome.vue')
     },
     {
+      path: '/tool/editor',
+      name: 'tool.editor',
+      component: () => import('@/pages/tool/ToolEditor.vue')
+    },
+    {
       path: '/test',
       name: 'test',
       component: TestPage
