@@ -4,12 +4,8 @@
             <template #header>
                 <c-username :user="i.replyer" /> / <c-date :date="new Date(i.time)" />
                 <div class="reply-operator">
-                    <span @click="doReplyLike(i.id)">
-                        <font-awesome-icon :icon="faThumbsUp" /> {{ i.like }}
-                    </span>
-                    <span @click="doReplyDislike(i.id)">
-                        <font-awesome-icon :icon="faThumbsDown" /> {{ i.dislike }}
-                    </span>
+                    <span @click="doReplyUvote(i.id)"><font-awesome-icon :icon="faThumbsUp" />{{ i.uvote }}</span>
+                    <span @click="doReplyDvote(i.id)"><font-awesome-icon :icon="faThumbsDown" /> {{ i.dvote }}</span>
                 </div>
             </template>
             <template #message>
@@ -68,10 +64,10 @@ onMounted(() => {
     showMore();
 });
 
-function doReplyLike(rid: ReplyId){
+function doReplyUvote(rid: ReplyId){
     console.log(rid, 'do reply like.');
 }
-function doReplyDislike(rid: ReplyId){
+function doReplyDvote(rid: ReplyId){
     console.log(rid, 'do reply like.');
 }
 

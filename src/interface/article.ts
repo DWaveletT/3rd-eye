@@ -16,35 +16,37 @@ interface Tag {
 
 interface Post {
     id: PostId;
-    time: number;
 
-    auth: User;
+    create_time: number;
+    update_time: number;
+
+    author: User;
+    title: string;
+    banner?: string;
+    abstract?: string;
+    priority?: number;
 
     board: BoardId;
-
-    title: string;
-    summary?: string;
-
-    like: number;
-    dislike: number;
-
     tag: TagId[];
 
-    banner?: string;
+    uvote: number;
+    dvote: number;
 
     extension?: object;
 };
 
 interface Front {
-    time: number;
+    create_time: number;
+    update_time: number;
+
     title: string;
-
-    tag?: TagId[];
-    border?: BoardId;
-
-    auth?: User;
-    summary?: string;
+    author?: User;
     banner?: string;
+    abstract?: string;
+    priority?: number;
+
+    board: BoardId;
+    tag: TagId[];
 
     extension?: object;
 }
@@ -59,8 +61,8 @@ interface Reply {
 
     content: string;
 
-    like: number;
-    dislike: number;
+    uvote: number;
+    dvote: number;
 };
 
 export type { Post, Reply, Tag, Board, Front };

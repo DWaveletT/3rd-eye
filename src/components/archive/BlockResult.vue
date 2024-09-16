@@ -47,12 +47,12 @@
                                 </span>
                             </div>
                             <div class="author">
-                                {{ post.auth.name }} / <c-date :date="new Date(post.time)" />
+                                {{ post.author.name }} / <c-date :date="new Date(post.create_time)" />
                             </div>
                         </div>
-                        <div class="summary-container" @click="router.push('/article/' + post.id)">
-                            <div class="summary">
-                                {{ post.summary }}
+                        <div class="abstract-container" @click="router.push('/article/' + post.id)">
+                            <div class="abstract">
+                                {{ post.abstract }}
                             </div>
                             <div class="decoration" />
                         </div>
@@ -150,7 +150,7 @@ async function doSearch(){
         if(params.value.board && post.board !== params.value.board)
             continue;
 
-        if(params.value.time && !(params.value.time[0] <= post.time && post.time <= params.value.time[1]))
+        if(params.value.time && !(params.value.time[0] <= post.create_time && post.create_time <= params.value.time[1]))
             continue;
 
         let ok = true;
@@ -164,7 +164,7 @@ async function doSearch(){
 
         let val = 1;
 
-        const text = post.title + '#' + post.auth + '#' + post.summary + '#' + getTagText(post.tag);
+        const text = post.title + '#' + post.author + '#' + post.abstract + '#' + getTagText(post.tag);
         
         let cur = 0, last = -1;
         for(let i = 0;i < text.length;i ++){
@@ -189,10 +189,10 @@ async function doSearch(){
         result.value.sort((a, b) => b.weight - a.weight);
     else 
     if(order.value === 'time-old')
-        result.value.sort((a, b) => a.post.time - b.post.time);
+        result.value.sort((a, b) => a.post.create_time - b.post.create_time);
     else
     if(order.value === 'time-new')
-        result.value.sort((a, b) => b.post.time - a.post.time);
+        result.value.sort((a, b) => b.post.create_time - a.post.create_time);
 }
 
 function doChangeOrder(){
@@ -200,10 +200,10 @@ function doChangeOrder(){
         result.value.sort((a, b) => b.weight - a.weight);
     else 
     if(order.value === 'time-old')
-        result.value.sort((a, b) => a.post.time - b.post.time);
+        result.value.sort((a, b) => a.post.create_time - b.post.create_time);
     else
     if(order.value === 'time-new')
-        result.value.sort((a, b) => b.post.time - a.post.time);
+        result.value.sort((a, b) => b.post.create_time - a.post.create_time);
 }
 
 defineExpose({ doSearch });
@@ -286,7 +286,7 @@ onMounted(() => {
             color: var(--text-minor-color-p);
         }
     }
-    > .summary-container {
+    > .abstract-container {
 
         position: relative;
 
@@ -297,7 +297,7 @@ onMounted(() => {
         width: 60%;
         height: 100%;
 
-        > .summary {
+        > .abstract {
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient:vertical;

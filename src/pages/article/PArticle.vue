@@ -5,7 +5,7 @@
 
             <el-divider />
             
-            <block-comment :replys="testdata.testReply" />
+            <!-- <block-comment :replys="testdata.testReply" /> -->
         </template>
         <template #aside>
             <block-sidebar :root="root" />

@@ -79,6 +79,8 @@ $info-color: #409EFF;
 }
 
 .markdown {
+    line-height: 150%;
+
     svg {
         &.head-link {
 
@@ -90,7 +92,6 @@ $info-color: #409EFF;
             transition: opacity 0.2s ease-in-out;
 
             &:hover {
-                color: $succ-color;
                 opacity: 1 !important;
             }
         }
@@ -100,7 +101,7 @@ $info-color: #409EFF;
     h1, h2, h3, h4, h5, h6 {
         
         color: var(--text-color-h);
-        margin: 0.5em 0;
+        margin: 1.5em 0 1em 0;
         position: relative;
 
         &:hover {
@@ -121,6 +122,15 @@ $info-color: #409EFF;
         color: var(--text-color-p);
         text-align: justify;
         margin: 0.5em 0;
+    }
+
+    hr {
+        margin: 2em 3em;
+        opacity: 0.4;
+    }
+
+    img {
+        max-width: 100%;
     }
 
     strong {
@@ -275,7 +285,7 @@ $info-color: #409EFF;
     }
 
     code {
-        font-family: consolas
+        font-family: consolas;
     }
 
     .code-container {

@@ -1,10 +1,10 @@
 <template>
     <el-tooltip
-        :content="date.toLocaleDateString() + ' ' + date.toLocaleTimeString()"
+        :content="props.date.toLocaleDateString() + ' ' + props.date.toLocaleTimeString()"
         :placement="props.placement"
     >{{
         (props.date.getMonth() + 1).toString() + ' 月 ' + 
-        props.date.getDay()        .toString() + ' 日'
+         props.date.getDate()      .toString() + ' 日'
     }}</el-tooltip>
 </template>
 

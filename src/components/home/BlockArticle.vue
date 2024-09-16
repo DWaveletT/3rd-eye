@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="time">
-                        <c-date :date="new Date(post.time)" placement="bottom" />
+                        <c-date :date="new Date(post.create_time * 1000)" placement="bottom" />
                     </div>
                 </div>
             </div>

@@ -126,7 +126,7 @@ const countTime = computed(() => {
     }> = {};
     
     for(const [ , post] of Object.entries(props.posts)){
-        const date = new Date(post.time);
+        const date = new Date(post.create_time * 1000);
 
         const year  = date.getFullYear();
         const month = date.getMonth() + 1;

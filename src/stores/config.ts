@@ -16,29 +16,14 @@ export const useBlogConfig = defineStore('blogConfig', () => {
     const listTag: Record<number, Tag> = {
         1: {
             id: 1,
-            name: '算法竞赛',
+            name: '题解',
             color: '#20E3D1'
         },
-        10: {
-            id: 10,
-            name: '算法竞赛',
+        2: {
+            id: 2,
+            name: '学习',
             color: '#20E3D1'
         },
-        20: {
-            id: 20,
-            name: '算法竞赛',
-            color: '#20E3D1'
-        },
-        30: {
-            id: 30,
-            name: '算法竞赛',
-            color: '#20E3D1'
-        },
-        40: {
-            id: 40,
-            name: '算法竞赛',
-            color: '#20E3D1'
-        }
     };
 
     const listBoard: Record<number, Board> = {

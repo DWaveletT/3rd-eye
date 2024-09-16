@@ -21,20 +21,20 @@ export const useArticle = defineStore('article', () => {
 
             const post: Post = {
                 id: id,
-                like   : 0,
-                dislike: 0,
+                uvote: 0,
+                dvote: 0,
 
-                auth: {
+                author: {
                     id: 0,
                     name: '离散小波变换°',
                     role: 1,
                     avatar: '/blog/avatar.png'
                 },
-                board:  0,
-                tag  : [],
 
                 ...front
             };
+            
+
             posts[id] = post;
         }
         return posts;

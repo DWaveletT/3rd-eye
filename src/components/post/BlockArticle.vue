@@ -10,7 +10,8 @@
                 </div>
 
                 <div class="article-info">
-                    更新时间：<c-date :date="new Date(props.post.time)" />
+                    创建时间：<c-date :date="new Date(props.post.create_time * 1000)" /><br>
+                    更新时间：<c-date :date="new Date(props.post.update_time * 1000)" />
                 </div>
             </div>
 
@@ -73,6 +74,7 @@ const root = defineModel<HeadlineInfo>('root', { required: true });
 
 .article-info {
     margin-top: 0.5em;
+    line-height: 1.5;
 
     text-align: right;
 
